@@ -111,11 +111,11 @@ public class TripleSDES {
     }
 
     public static byte[] tripleSDESEncrypt(byte[] plainText, byte[] key_1, byte[] key_2) {
-        return (Decrypt(key_1, Decrypt(key_2, Decrypt(key_1, plainText))));
+        return (EncryptSDES(key_1, Decrypt(key_2, EncryptSDES(key_1, plainText))));
     }
 
     public static byte[] tripleSDESDecrypt(byte[] cipher, byte[] key_1, byte[] key_2) {
-        return(EncryptSDES(key_1, EncryptSDES(key_2, EncryptSDES(key_1 , cipher))));
+        return(Decrypt(key_1, EncryptSDES(key_2, Decrypt(key_1 , cipher))));
     }
 
     public static void main(String[] args){
@@ -125,8 +125,8 @@ public class TripleSDES {
 
 
         byte[] plainText = {1,0,1,0,1,0,1,0};
-        byte[] encryptPlainText = tripleSDESEncrypt(plainText,key_1,key_2);
-        printResultsEncryption(encryptPlainText);
+       // byte[] encryptPlainText = tripleSDESEncrypt(plainText,key_1,key_2);
+       // printResultsEncryption(encryptPlainText);
 
 
         byte[] cipher = {1,0,0,1,0,0,1,0};
@@ -137,11 +137,11 @@ public class TripleSDES {
 /*
  *         K1              K2            P              Cipher
  * 		0000000000     0000000000     00000000        (11110000)
- *		1000101110     0110101110     11010111        (10100011)
- *		1000101110     0110101110     10101010        (10011110)
+ *		1000101110     0110101110     11010111        (10111001)
+ *		1000101110     0110101110     10101010        (11100100)
  *		1111111111     1111111111     10101010        (00000100)
- *		1000101110     0110101110    (10101011)        11100110
- *  	1011101111     0110101110    (01011001)        01010000
+ *		1000101110     0110101110    (11111101)        11100110
+ *  	1011101111     0110101110    (01001111)        01010000
  * 		0000000000     0000000000    (01010010)        10000000
  *  	1111111111     1111111111    (00100101)        10010010
  */
