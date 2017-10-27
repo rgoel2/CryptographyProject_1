@@ -40,7 +40,6 @@ public class TripleSDES {
         System.out.print("Decryption(Plain Text)     : ");
         printResults(decryptCipherText);
 
-
 /*
  *         K1              K2            P              Cipher
  * 		0000000000     0000000000     00000000        (11110000)
