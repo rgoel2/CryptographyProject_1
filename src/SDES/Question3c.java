@@ -30,7 +30,9 @@ public class Question3c {
 //            output = new BufferedWriter(new FileWriter(file));
 
 
-        for (int i = 21; i < 30; i++) {
+        for (int i = 0; i < 1024
+        		
+        		; i++) {
             key_1 = q.integerToByte(i, 10);
             for (int j = 0; j < 1024; j++) { // key
                 int r=0;
